@@ -4,7 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from io import BytesIO
-import openpyxl
 from openpyxl import Workbook
 from openpyxl.chart import BarChart, Reference
 
@@ -49,25 +48,25 @@ if st.button('Comparer'):
         percent = ((ca_current - ca_minus_one) / ca_minus_one) * 100
         if percent > croissance_elevee:
             category = "Croissance élevée"
-            st.success(f"Le chiffre d'affaires a augmenté de {ca_current - ca_minus_one:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : ")
+            st.success(f"Le chiffre d'affaires a augmenté de {ca_current - ca_minus_one:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : {category}. ")
         elif percent > croissance_moderée:
             category = "Croissance modérée"
-            st.warning(f"Le chiffre d'affaires a augmenté de {ca_current - ca_minus_one:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : ")
+            st.warning(f"Le chiffre d'affaires a augmenté de {ca_current - ca_minus_one:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : {category}. ")
         elif percent > 0:
             category = "Croissance faible"
-            st.info(f"Le chiffre d'affaires a augmenté de {ca_current - ca_minus_one:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : ")
+            st.info(f"Le chiffre d'affaires a augmenté de {ca_current - ca_minus_one:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : {category}. ")
         elif percent == 0:
             category = "Stable"
-            st.info(f"Le chiffre d'affaires est resté stable entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : ")
+            st.info(f"Le chiffre d'affaires est resté stable entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : {category}. ")
         elif percent > declin_faible:
             category = "Déclin faible"
-            st.error(f"Le chiffre d'affaires a diminué de {ca_minus_one - ca_current:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : ")
+            st.error(f"Le chiffre d'affaires a diminué de {ca_minus_one - ca_current:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : {category}. ")
         elif percent > declin_moderé:
             category = "Déclin modéré"
-            st.error(f"Le chiffre d'affaires a diminué de {ca_minus_one - ca_current:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : ")
+            st.error(f"Le chiffre d'affaires a diminué de {ca_minus_one - ca_current:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : {category}. ")
         else:
             category = "Déclin important"
-            st.error(f"Le chiffre d'affaires a diminué de {ca_minus_one - ca_current:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : ")
+            st.error(f"Le chiffre d'affaires a diminué de {ca_minus_one - ca_current:.2f} € entre {year_minus_one} et {year_current}. Le taux de croissance est de {percent:.2f} %, le taux de croissance est : {category}. ")
 
         # Création d'un DataFrame pour le graphique
         data = pd.DataFrame({
