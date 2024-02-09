@@ -1,8 +1,9 @@
 import streamlit as st
 
+
 # Affichage du mode d'emploi
 st.markdown(
-"""
+    """
 ## Mode d'emploi de l'application de comparaison de chiffre d'affaires
 
 ### Introduction
